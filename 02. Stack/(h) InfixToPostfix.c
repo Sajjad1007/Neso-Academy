@@ -1,8 +1,9 @@
 /*
-infix means that the operator is written in between two operands
+Infix means that the operator is written in between two operands
 postfix means that the operator is written after two operands
 computers prefer postfix expressions instead of infix expressions
 */
+
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
