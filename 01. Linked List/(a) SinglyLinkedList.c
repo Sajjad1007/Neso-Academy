@@ -216,7 +216,7 @@ int main(void)
         }
         else{
             printf("\nThe linked list is empty.\n");
-            printf("So reverse linked list does not exist.\n");
+            printf("So reverse of the linked list does not exist.\n");
             return 0;
         }
     }
