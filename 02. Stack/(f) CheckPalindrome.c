@@ -9,12 +9,8 @@ struct node{
 
 bool isEmpty()
 {
-    if(top == NULL){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(top == NULL) return true;
+    else return false;
 }
 
 void push(char data)
@@ -52,17 +48,11 @@ bool isPalindrome(char *str)
     }
 
     while(str[++i]){
-        if(isEmpty() || str[i] != pop()){
-            return false;
-        }
+        if(isEmpty() || str[i] != pop()) return false;
     }
 
-    if(isEmpty()){
-       return true;
-    }
-    else{
-        return false;
-    }
+    if(isEmpty()) return true;
+    else return false;
 }
 
 int main(void)
@@ -72,10 +62,10 @@ int main(void)
     scanf("%s", str);
 
     if(isPalindrome(str)){
-        printf("This is a palindrome.\n");
+        printf("\nThis is a palindrome.\n");
     }
     else{
-        printf("This is not a palindrome.\n");
+        printf("\nThis is not a palindrome.\n");
     }
     return 0;
 }

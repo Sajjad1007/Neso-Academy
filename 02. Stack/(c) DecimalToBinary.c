@@ -8,12 +8,8 @@ int top = -1;
 
 bool isEmpty()
 {
-    if(top == -1){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(top == -1) return true;
+    else return false;
 }
 
 void push(int data)

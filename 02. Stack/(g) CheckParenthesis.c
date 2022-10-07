@@ -10,22 +10,14 @@ int top = -1;
 
 bool isFull()
 {
-    if(top == MAX-1){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(top == MAX-1) return true;
+    else return false;
 }
 
 bool isEmpty()
 {
-    if(top == -1){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(top == -1) return true;
+    else return false;
 }
 
 void push(char data)
@@ -49,21 +41,13 @@ char pop()
 
 bool isMatched(char a, char b)
 {
-    if(a == '[' && b == ']'){
-        return true;
-    }
-    else if(a == '{' && b == '}'){
-        return true;
-    }
-    else if(a == '(' && b == ')'){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(a == '[' && b == ']') return true;
+    else if(a == '{' && b == '}') return true;
+    else if(a == '(' && b == ')') return true;
+    else return false;
 }
 
-bool isValid(char *str)
+bool isBalanced(char *str)
 {
     for(int i = 0; i < strlen(str); i++){
         if(str[i] == '[' || str[i] == '{' || str[i] == '('){
@@ -71,21 +55,18 @@ bool isValid(char *str)
         }
         else if(str[i] == ']' || str[i] == '}' || str[i] == ')'){
             if(isEmpty()){
-                printf("Right brackets are more than left brackets, ");
+                printf("Right brackets are more than left brackets\n");
                 return false;
             }
             else if(!isMatched(pop(), str[i])){
-                printf("Mismatched brackets, ");
+                printf("Mismatched brackets\n");
                 return false;
             }
         }
     }
-    if(isEmpty()){
-        printf("Brackets are well balanced, ");
-        return true;
-    }
+    if(isEmpty()) return true;
     else{
-        printf("Left brackets are more than right brackets, ");
+        printf("Left brackets are more than right brackets\n");
         return false;
     }
 }
@@ -96,11 +77,8 @@ int main(void)
     printf("Enter the algebraic expression : ");
     gets(expr);
     printf("\n");
-    if(isValid(expr)){
-        printf("so the expression is valid.\n");
-    }
-    else{
-        printf("so the expression is invalid.\n");
+    if(isBalanced(expr)){
+        printf("Brackets are well balanced\n");
     }
     return 0;
 }

@@ -1,5 +1,5 @@
 /*
-Infix means that the operator is written in between two operands
+infix means that the operator is written in between two operands
 postfix means that the operator is written after two operands
 computers prefer postfix expressions instead of infix expressions
 */
@@ -19,22 +19,14 @@ int top = -1;
 
 bool isFull()
 {
-    if(top == MAX-1){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(top == MAX-1) return true;
+    else return false;
 }
 
 bool isEmpty()
 {
-    if(top == -1){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(top == -1) return true;
+    else return false;
 }
 
 void push(int val)
@@ -67,12 +59,8 @@ int peek()
 
 bool isSpace(char c)
 {
-    if(c == ' ' || c == '\t'){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(c == ' ' || c == '\t') return true;
+    else return false;
 }
 
 int precedence(char symbol)

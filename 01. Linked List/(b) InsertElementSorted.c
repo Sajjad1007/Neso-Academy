@@ -61,9 +61,7 @@ int main(void)
         printNodes(head);
         printf("\n");
     }
-    else{
-        printf("No nodes in the list.\n");
-    }
+    else printf("No nodes in the list.\n");
 
     printf("\nEnter a node to insert = ");
     scanf("%d", &data);
@@ -73,9 +71,7 @@ int main(void)
         temp->link = head;
         head = temp;
     }
-    else{
-        insertNode(head, data);
-    }
+    else insertNode(head, data);
 
     printf("The list after insertion : ");
     printNodes(head);

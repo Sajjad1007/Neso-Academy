@@ -11,9 +11,7 @@ struct node *addNode(struct node *tail, int val)
     struct node *newNode = (struct node*)malloc(sizeof(struct node));
     newNode->data = val;
     newNode->link = NULL;
-    if(tail == NULL){
-        return newNode;
-    }
+    if(tail == NULL) return newNode;
     else{
         tail->link = newNode;
         return newNode;

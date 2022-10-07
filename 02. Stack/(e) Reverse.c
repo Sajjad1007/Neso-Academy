@@ -9,12 +9,8 @@ struct node{
 
 bool isEmpty(struct node **top)
 {
-    if(*top == NULL){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(*top == NULL) return true;
+    else return false;
 }
 
 void push(struct node **top, int data)

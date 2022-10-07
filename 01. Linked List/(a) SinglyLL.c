@@ -185,9 +185,7 @@ int main(void)
         else if(position == count+1){
             tail = addAtLast(tail, data);
         }
-        else{
-            addAtPosition(head, data, position);
-        }
+        else addAtPosition(head, data, position);
 
         printf("\nThe linked list : ");
         printNodes(head);
@@ -204,9 +202,7 @@ int main(void)
         else if(position == n){
             tail = deleteLast(head);
         }
-        else{
-            deletePosition(head, position);
-        }
+        else deletePosition(head, position);
 
         --n;
         if(n > 0){

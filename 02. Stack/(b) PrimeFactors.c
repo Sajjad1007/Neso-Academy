@@ -9,22 +9,14 @@ int top = -1;
 
 bool isFull()
 {
-    if(top == MAX-1){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(top == MAX-1) return true;
+    else return false;
 }
 
 bool isEmpty()
 {
-    if(top == -1){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(top == -1) return true;
+    else return false;
 }
 
 void push(int data)

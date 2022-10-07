@@ -109,9 +109,7 @@ int main(void)
         printNodes(head);
         printf("\n");
     }
-    else{
-        printf("\nNo elements in the linked list.\n");
-    }
+    else printf("\nNo elements in the linked list.\n");
 
     printf("\nEnter the position where to add a node : ");
     scanf("%d", &position);
@@ -121,19 +119,13 @@ int main(void)
         scanf("%d", &data);
 
         if(position == 1){
-            if(head == NULL){
-                head = createNode(data);
-            }
-            else{
-                head = addAtFirst(head, data);
-            }
+            if(head == NULL) head = createNode(data);
+            else head = addAtFirst(head, data);
         }
         else if(position == n+1){
             tail = addAtLast(tail, data);
         }
-        else{
-            addAtPosition(head, data, position);
-        }
+        else addAtPosition(head, data, position);
 
         ++n;
         printf("The linked list : ");
@@ -155,16 +147,10 @@ int main(void)
                 free(head);
                 head = NULL;
             }
-            else{
-                head = deleteFirst(head);
-            }
+            else head = deleteFirst(head);
         }
-        else if(position == n){
-            tail = deleteLast(tail);
-        }
-        else{
-            deletePosition(head, position);
-        }
+        else if(position == n) tail = deleteLast(tail);
+        else deletePosition(head, position);
 
         --n;
         if(n == 0){

@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 struct node{
-    struct node *prev;
     int data;
     struct node *next;
 };
@@ -10,18 +9,16 @@ struct node{
 struct node *createNode(int data)
 {
     struct node *temp = (struct node*)malloc(sizeof(struct node));
-    temp->prev = temp;
     temp->data = data;
     temp->next = temp;
     return temp;
 }
 
+//for circular linked list, addAtFirst function do not need to return any pointer
 void addAtFirst(struct node *tail, int data)
 {
     struct node *head = createNode(data);
     head->next = tail->next;
-    tail->next->prev = head;
-    head->prev = tail;
     tail->next = head;
     return;
 }
@@ -30,9 +27,7 @@ struct node *addAtLast(struct node *tail, int data)
 {
     struct node *temp = createNode(data);
     temp->next = tail->next;
-    temp->prev = tail;
     tail->next = temp;
-    temp->next->prev = temp;
     return temp;
 }
 
@@ -43,44 +38,69 @@ void addAtPosition(struct node *ptr, int data, int position)
         ptr = ptr->next;
     }
     temp->next = ptr->next;
-    temp->prev = ptr;
-    ptr->next->prev = temp;
     ptr->next = temp;
     return;
 }
 
 void deleteFirst(struct node *tail)
 {
-    struct node *head = tail->next;
-    tail->next = head->next;
-    free(head);
-    head = NULL;
-    tail->next->prev = tail;
+    struct node *ptr = tail->next;
+    tail->next = ptr->next;
+    free(ptr);
+    ptr = NULL;
     return;
 }
 
-struct node *deleteLast(struct node *tail)
-{
-    struct node *previousTail = tail->prev;
-    previousTail->next = tail->next;
-    tail->next->prev = previousTail;
-    free(tail);
-    tail = NULL;
-    return previousTail;
-}
-
-void deletePosition(struct node *prev, int position)
+struct node *deletePosition(struct node *tail, int position)
 {
     struct node *curr = NULL;
+    struct node *prev = tail->next;
     while(--position > 1){
         prev = prev->next;
     }
     curr = prev->next;
     prev->next = curr->next;
-    curr->next->prev = prev;
+    if(curr == tail){
+        tail = prev;
+    }
     free(curr);
     curr = NULL;
+    return tail;
+}
+
+void searchElement(struct node *tail, int data)
+{
+    struct node *ptr = tail->next;
+    int i = 1;
+    if(tail == NULL){
+        printf("The linked list is empty.\n");
+        return;
+    }
+
+    do{
+        if(data == ptr->data){
+            printf("%d is at position %d.\n", data, i);
+            return;
+        }
+        else{
+            ptr = ptr->next;
+            ++i;
+        }
+    } while(ptr != tail->next);
+
+    printf("%d does not exist in the linked list.\n", data);
     return;
+}
+
+int countOfNodes(struct node *tail)
+{
+    struct node *ptr = tail->next;
+    int count = 0;
+    while(ptr != tail){
+        ++count;
+        ptr = ptr->next;
+    }
+    return ++count;
 }
 
 void printNodes(struct node *tail)
@@ -98,30 +118,30 @@ int main(void)
     struct node *tail = NULL;
     int data, position, n;
 
-    printf("How many nodes you want to enter? ");
+    printf("Enter the number of nodes = ");
     scanf("%d", &n);
 
     if(n > 0){
-        printf("Enter your node(s) : ");
+        printf("Enter the node(s) : ");
         scanf("%d", &data);
         tail = createNode(data);
         for(int i = 1; i < n; ++i){
             scanf("%d", &data);
             tail = addAtLast(tail, data);
         }
-        printf("The linked list  : ");
+        printf("\nThe linked list : ");
         printNodes(tail);
-        printf("\n");
+        printf("\nTotal nodes = %d\n", countOfNodes(tail));
     }
-    else{
-        printf("\nNo elements in the linked list.\n");
+    else if(n == 0){
+        printf("\nNo node in the linked list.\n");
     }
 
     printf("\nEnter the position where to add a node : ");
     scanf("%d", &position);
 
     if(position > 0){
-        printf("Enter a node to add at position %d : ",position);
+        printf("Enter the node : ");
         scanf("%d", &data);
 
         if(position == 1){
@@ -154,31 +174,23 @@ int main(void)
     scanf("%d", &position);
 
     if(position > 0){
-        if(position == 1){
-            if(n == 1){
-                free(tail);
-                tail = NULL;
-            }
-            else{
-                deleteFirst(tail);
-            }
-        }
-        else if(position == n){
-            tail = deleteLast(tail);
-        }
-        else{
-            deletePosition(tail->next, position);
-        }
+        if(position == 1) deleteFirst(tail);
+        else tail = deletePosition(tail, position);
 
         --n;
-        if(n == 0){
+        if(n > 0){
+            printf("The linked list : ");
+            printNodes(tail);
+            printf("\n");
+        }
+        else{
             printf("\nThe linked list is empty.\n");
             return 0;
         }
     }
 
-    printf("The linked list : ");
-    printNodes(tail);
-    printf("\n");
+    printf("\nEnter a element to search : ");
+    scanf("%d", &data);
+    searchElement(tail, data);
     return 0;
 }

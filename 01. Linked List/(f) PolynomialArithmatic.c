@@ -58,16 +58,12 @@ struct node *createPolynomial(struct node *head)
 
 void printPolynomial(struct node *ptr)
 {
-    if(ptr == NULL){
-        printf("0\n");
-    }
+    if(ptr == NULL) printf("0\n");
     else{
         while(true){
             printf("(%dx^%d)", ptr->coef, ptr->expo);
             ptr = ptr->link;
-            if(ptr != NULL){
-                printf(" + ");
-            }
+            if(ptr != NULL) printf(" + ");
             else{
                 printf("\n");
                 break;

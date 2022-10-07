@@ -1,50 +1,31 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> //for exit(1) function
 #include <stdbool.h>
 
-struct node{
-    int data;
-    struct node *link;
-} *top = NULL;
+#define MAX 5
 
-struct node *createNode(int data)
-{
-    struct node *temp = (struct node*)malloc(sizeof(struct node));
-    temp->data = data;
-    temp->link = NULL;
-    return temp;
-}
+int stack[MAX];
+int top = -1; //the stack is empty
 
 bool isFull()
 {
-    struct node *temp = (struct node*)malloc(sizeof(struct node));
-    if(temp == NULL){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(top == MAX-1) return true;
+    else return false;
 }
 
 bool isEmpty()
 {
-    if(top == NULL){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(top == -1) return true;
+    else return false;
 }
 
 void push(int data)
 {
     if(isFull()){
         printf("Stack overflow.\n");
-        exit(1);
+        exit(1); //exit(1) means abnormal termination of the program
     }
-    struct node *temp = createNode(data);
-    temp->link = top;
-    top = temp;
+    stack[++top] = data;
     return;
 }
 
@@ -54,12 +35,7 @@ int pop()
         printf("Stack underflow.\n");
         exit(1);
     }
-    struct node *ptr = top;
-    top = top->link;
-    int value = ptr->data;
-    free(ptr);
-    ptr = NULL;
-    return value;
+    return stack[top--];
 }
 
 int peek()
@@ -68,7 +44,7 @@ int peek()
         printf("Stack underflow.\n");
         exit(1);
     }
-    return top->data;
+    return stack[top];
 }
 
 void printChoiceList()
@@ -87,11 +63,9 @@ void printStack()
         printf("The stack is empty.\n");
         return;
     }
-    struct node *ptr = top;
     printf("The stack : ");
-    while(ptr != NULL){
-        printf("%d ", ptr->data);
-        ptr = ptr->link;
+    for(int i = top; i >= 0; --i){
+        printf("%d ", stack[i]);
     }
     printf("\n");
     return;
