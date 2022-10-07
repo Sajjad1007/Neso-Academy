@@ -22,7 +22,7 @@ bool isEmpty()
 void push(int data)
 {
     if(isFull()){
-        printf("Stack overflow.\n");
+        printf("Stack overflow\n");
         exit(1); //exit(1) means abnormal termination of the program
     }
     stack[++top] = data;
@@ -32,7 +32,7 @@ void push(int data)
 int pop()
 {
     if(isEmpty()){
-        printf("Stack underflow.\n");
+        printf("Stack underflow\n");
         exit(1);
     }
     return stack[top--];
@@ -41,7 +41,7 @@ int pop()
 int peek()
 {
     if(isEmpty()){
-        printf("Stack underflow.\n");
+        printf("Stack underflow\n");
         exit(1);
     }
     return stack[top];
@@ -60,7 +60,7 @@ void printChoiceList()
 void printStack()
 {
     if(isEmpty()){
-        printf("The stack is empty.\n");
+        printf("The stack is empty\n");
         return;
     }
     printf("The stack : ");

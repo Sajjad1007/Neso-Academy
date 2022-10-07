@@ -19,7 +19,10 @@ bool isFull()
 {
     struct node *temp = (struct node*)malloc(sizeof(struct node));
     if(temp == NULL) return true;
-    else return false;
+    else{
+        free(temp);
+        return false;
+    }
 }
 
 bool isEmpty()
@@ -31,7 +34,7 @@ bool isEmpty()
 void push(int data)
 {
     if(isFull()){
-        printf("Stack overflow.\n");
+        printf("Stack overflow\n");
         exit(1);
     }
     struct node *temp = createNode(data);
@@ -43,7 +46,7 @@ void push(int data)
 int pop()
 {
     if(isEmpty()){
-        printf("Stack underflow.\n");
+        printf("Stack underflow\n");
         exit(1);
     }
     struct node *ptr = top;
@@ -57,7 +60,7 @@ int pop()
 int peek()
 {
     if(isEmpty()){
-        printf("Stack underflow.\n");
+        printf("Stack underflow\n");
         exit(1);
     }
     return top->data;
@@ -76,7 +79,7 @@ void printChoiceList()
 void printStack()
 {
     if(isEmpty()){
-        printf("The stack is empty.\n");
+        printf("The stack is empty\n");
         return;
     }
     struct node *ptr = top;

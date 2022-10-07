@@ -53,12 +53,8 @@ int main(void)
 
 bool isEmpty()
 {
-    if(front == NULL){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(front == NULL) return true;
+    else return false;
 }
 
 void enqueue(int priority, int data)

@@ -23,7 +23,7 @@ bool isEmpty()
 void push(char data)
 {
     if(isFull()){
-        printf("Stack overflow.\n");
+        printf("Stack overflow\n");
         exit(1);
     }
     stack[++top] = data;
@@ -33,7 +33,7 @@ void push(char data)
 char pop()
 {
     if(isEmpty()){
-        printf("Stack underflow.\n");
+        printf("Stack underflow\n");
         exit(1);
     }
     return stack[top--];

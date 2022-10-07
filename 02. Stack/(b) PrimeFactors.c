@@ -22,7 +22,7 @@ bool isEmpty()
 void push(int data)
 {
     if(isFull()){
-        printf("Stack overflow.\n");
+        printf("Stack overflow\n");
         exit(1);
     }
     stack[++top] = data;

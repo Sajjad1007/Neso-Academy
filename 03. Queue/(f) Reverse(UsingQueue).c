@@ -37,22 +37,14 @@ int main(void)
 
 bool isSEmpty()
 {
-    if(top == -1){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(top == -1) return true;
+    else return false;
 }
 
 bool isSFull()
 {
-    if(top == MAX-1){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(top == MAX-1) return true;
+    else return false;
 }
 
 void push(int data)

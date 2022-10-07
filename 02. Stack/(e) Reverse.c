@@ -17,7 +17,7 @@ void push(struct node **top, int data)
 {
     struct node *temp = (struct node*)malloc(sizeof(struct node));
     if(temp == NULL){
-        printf("Stack overflow.\n");
+        printf("Stack overflow\n");
         exit(1);
     }
     temp->data = data;
@@ -29,7 +29,7 @@ void push(struct node **top, int data)
 int pop(struct node **top)
 {
     if(isEmpty(top)){
-        printf("Stack underflow.\n");
+        printf("Stack underflow\n");
         exit(1);
     }
     struct node *ptr = *top;
@@ -78,7 +78,7 @@ int main(void)
     scanf("%d", &n);
 
     if(n <= 0){
-        printf("The stack is empty.\n");
+        printf("The stack is empty\n");
         return 0;
     }
 

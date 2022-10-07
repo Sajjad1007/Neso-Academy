@@ -35,22 +35,14 @@ int main(void)
 
 bool isQFull()
 {
-    if(rear == MAX-1){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(rear == MAX-1) return true;
+    else return false;
 }
 
 bool isQEmpty()
 {
-    if(front == -1 || front == rear+1){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(front == -1 || front == rear+1) return true;
+    else return false;
 }
 
 void enqueue(int data)
@@ -59,9 +51,7 @@ void enqueue(int data)
         printf("Queue overflow.\n");
         exit(1);
     }
-    if(front == -1){
-        front = 0;
-    }
+    if(front == -1) front = 0;
     queue[++rear] = data;
     return;
 }
@@ -89,14 +79,10 @@ int pop()
 void reverseQueue()
 {
     //dequeue elements from queue, then push them onto stack
-    while(!isQEmpty()){
-        push(dequeue());
-    }
+    while(!isQEmpty()) push(dequeue());
     front = rear = -1; //reset front and rear
     //pop elements from stack, then enqueue them onto queue
-    while(top != -1){
-        enqueue(pop());
-    }
+    while(top != -1) enqueue(pop());
     return;
 }
 

@@ -1,4 +1,4 @@
-//double ended queue is an extension of circular queue
+//Double Ended Queue is an extension of circular queue
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -70,37 +70,25 @@ bool isFull()
     if((front == 0 && rear == MAX-1) || (front == rear+1)){
         return true;
     }
-    else{
-        return false;
-    }
+    else return false;
 }
 
 bool isEmpty()
 {
-    if(front == -1){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(front == -1) return true;
+    else return false;
 }
 
 void enqueueFront(int data)
 {
     if(isFull()){
-        printf("Queue overflow.\n");
+        printf("Queue overflow\n");
         exit(1);
     }
 
-    if(isEmpty()){
-        front = rear = 0;
-    }
-    else if(front == 0){
-        front = MAX-1;
-    }
-    else{
-        --front;
-    }
+    if(isEmpty()) front = rear = 0;
+    else if(front == 0) front = MAX-1;
+    else --front;
     deque[front] = data;
     return;
 }
@@ -108,19 +96,13 @@ void enqueueFront(int data)
 void enqueueRear(int data)
 {
     if(isFull()){
-        printf("Queue overflow.\n");
+        printf("Queue overflow\n");
         exit(1);
     }
 
-    if(isEmpty()){
-        front = rear = 0;
-    }
-    else if(rear == MAX-1){
-        rear = 0;
-    }
-    else{
-        ++rear;
-    }
+    if(isEmpty()) front = rear = 0;
+    else if(rear == MAX-1) rear = 0;
+    else ++rear;
     deque[rear] = data;
     return;
 }
@@ -136,12 +118,8 @@ int dequeueFront()
     if(front == rear){  //only one element left in the queue
         front = rear = -1;
     }
-    else if(front == MAX-1){
-        front = 0;
-    }
-    else{
-        ++front;
-    }
+    else if(front == MAX-1) front = 0;
+    else ++front;
     return value;
 }
 
@@ -153,15 +131,9 @@ int dequeueRear()
     }
 
     int value = deque[rear];
-    if(front == rear){
-        front = rear = -1;
-    }
-    else if(rear == 0){
-        rear = MAX-1;
-    }
-    else{
-        --rear;
-    }
+    if(front == rear) front = rear = -1;
+    else if(rear == 0) rear = MAX-1;
+    else --rear;
     return value;
 }
 
@@ -196,12 +168,8 @@ void printQueue()
     int i = front;
     while(i != rear){
         printf("%d ", deque[i]);
-        if(i == MAX-1){
-            i = 0;
-        }
-        else{
-            ++i;
-        }
+        if(i == MAX-1) i = 0;
+        else ++i;
     }
     printf("%d\n", deque[rear]);
     return;

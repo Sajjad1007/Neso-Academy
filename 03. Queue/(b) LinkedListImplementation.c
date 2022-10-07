@@ -62,22 +62,17 @@ int main(void)
 bool isFull()
 {
     struct node *temp = (struct node*)malloc(sizeof(struct node));
-    if(temp == NULL){
-        return true;
-    }
+    if(temp == NULL) return true;
     else{
+        free(temp);
         return false;
     }
 }
 
 bool isEmpty()
 {
-    if(front == NULL){
-        return true;
-    }
-    else{
-        return false;
-    }
+    if(front == NULL) return true;
+    else return false;
 }
 
 void enqueue(int data)
@@ -87,9 +82,7 @@ void enqueue(int data)
         exit(1);
     }
     struct node *temp = createNode(data);
-    if(isEmpty()){
-        front = rear = temp;
-    }
+    if(isEmpty()) front = rear = temp;
     else{
         rear->link = temp;
         rear = temp;

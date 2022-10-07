@@ -75,9 +75,7 @@ int dequeue()
             printf("Queue underflow.\n");
             exit(1);
         }
-        while(top1 != -1){
-            push2(pop1());
-        }
+        while(top1 != -1) push2(pop1());
     }
     return pop2();
 }
@@ -89,13 +87,9 @@ int peek()
             printf("Queue underflow.\n");
             exit(1);
         }
-        else{
-            return stack1[0];
-        }
+        else return stack1[0];
     }
-    else{
-        return stack2[top2];
-    }
+    else return stack2[top2];
 }
 
 void printQueue()

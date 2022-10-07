@@ -17,7 +17,7 @@ void push(char data)
 {
     struct node *temp = (struct node*)malloc(sizeof(struct node));
     if(temp == NULL){
-        printf("Stack overflow.\n");
+        printf("Stack overflow\n");
         exit(1);
     }
     temp->data = data;
@@ -29,7 +29,7 @@ void push(char data)
 char pop()
 {
     if(isEmpty()){
-        printf("Stack underflow.\n");
+        printf("Stack underflow\n");
         exit(1);
     }
     struct node *ptr = top;
@@ -62,10 +62,10 @@ int main(void)
     scanf("%s", str);
 
     if(isPalindrome(str)){
-        printf("\nThis is a palindrome.\n");
+        printf("\nThis is a palindrome\n");
     }
     else{
-        printf("\nThis is not a palindrome.\n");
+        printf("\nThis is not a palindrome\n");
     }
     return 0;
 }

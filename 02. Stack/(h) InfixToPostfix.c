@@ -17,12 +17,6 @@ char infix[MAX];
 char postfix[MAX];
 int top = -1;
 
-bool isFull()
-{
-    if(top == MAX-1) return true;
-    else return false;
-}
-
 bool isEmpty()
 {
     if(top == -1) return true;
@@ -31,29 +25,17 @@ bool isEmpty()
 
 void push(int val)
 {
-    if(isFull()){
-        printf("Stack overflow.\n");
-        exit(1);
-    }
     stack[++top] = val;
     return;
 }
 
 int pop()
 {
-    if(isEmpty()){
-        printf("Stack underflow.\n");
-        exit(1);
-    }
     return stack[top--];
 }
 
 int peek()
 {
-    if(isEmpty()){
-        printf("Stack underflow.\n");
-        exit(1);
-    }
     return stack[top];
 }
 
@@ -105,6 +87,7 @@ void infixToPostfix()
             case '/':
             case '^':
                 while(!isEmpty() && (precedence(peek()) >= precedence(symbol))){
+                    if(symbol == '^') break;
                     postfix[j++] = pop();
                 }
                 push(symbol);
@@ -146,7 +129,7 @@ int postfixEvaluation()
             case '/':
                 push(a/b);
                 break;
-            case '^': //the associativity of this operator is left to right
+            case '^': //the associativity of this operator is right to left
                 push(pow(a,b));
                 break;
             }
