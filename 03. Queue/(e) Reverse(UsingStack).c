@@ -92,9 +92,7 @@ void printQueue()
         printf("The queue is empty.\n");
         return;
     }
-    for(int i = front; i <= rear; ++i){
-        printf("%d ", queue[i]);
-    }
+    for(int i = front; i <= rear; ++i) printf("%d ", queue[i]);
     printf("\n");
     return;
 }

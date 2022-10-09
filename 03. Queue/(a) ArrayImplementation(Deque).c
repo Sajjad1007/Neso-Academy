@@ -67,9 +67,7 @@ int main(void)
 
 bool isFull()
 {
-    if((front == 0 && rear == MAX-1) || (front == rear+1)){
-        return true;
-    }
+    if((front == 0 && rear == MAX-1) || (front == rear+1)) return true;
     else return false;
 }
 
@@ -115,9 +113,7 @@ int dequeueFront()
     }
 
     int value = deque[front];
-    if(front == rear){  //only one element left in the queue
-        front = rear = -1;
-    }
+    if(front == rear) front = rear = -1; //only one element left in the queue
     else if(front == MAX-1) front = 0;
     else ++front;
     return value;

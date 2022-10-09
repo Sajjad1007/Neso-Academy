@@ -50,9 +50,7 @@ bool isMatched(char a, char b)
 bool isBalanced(char *str)
 {
     for(int i = 0; i < strlen(str); i++){
-        if(str[i] == '[' || str[i] == '{' || str[i] == '('){
-            push(str[i]);
-        }
+        if(str[i] == '[' || str[i] == '{' || str[i] == '(') push(str[i]);
         else if(str[i] == ']' || str[i] == '}' || str[i] == ')'){
             if(isEmpty()){
                 printf("Right brackets are more than left brackets\n");
@@ -77,8 +75,6 @@ int main(void)
     printf("Enter the algebraic expression : ");
     gets(expr);
     printf("\n");
-    if(isBalanced(expr)){
-        printf("Brackets are well balanced\n");
-    }
+    if(isBalanced(expr)) printf("Brackets are well balanced\n");
     return 0;
 }

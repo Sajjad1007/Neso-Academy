@@ -34,9 +34,7 @@ struct node *addAtLast(struct node *tail, int data)
 void addAtPosition(struct node *ptr, int data, int position)
 {
     struct node *temp = createNode(data);
-    while(--position > 1){
-        ptr = ptr->next;
-    }
+    while(--position > 1) ptr = ptr->next;
     temp->next = ptr->next;
     ptr->next = temp;
     return;
@@ -55,14 +53,10 @@ struct node *deletePosition(struct node *tail, int position)
 {
     struct node *curr = NULL;
     struct node *prev = tail->next;
-    while(--position > 1){
-        prev = prev->next;
-    }
+    while(--position > 1) prev = prev->next;
     curr = prev->next;
     prev->next = curr->next;
-    if(curr == tail){
-        tail = prev;
-    }
+    if(curr == tail) tail = prev;
     free(curr);
     curr = NULL;
     return tail;
@@ -133,9 +127,7 @@ int main(void)
         printNodes(tail);
         printf("\nTotal nodes = %d\n", countOfNodes(tail));
     }
-    else if(n == 0){
-        printf("\nNo node in the linked list.\n");
-    }
+    else if(n == 0) printf("\nNo node in the linked list.\n");
 
     printf("\nEnter the position where to add a node : ");
     scanf("%d", &position);
@@ -145,19 +137,11 @@ int main(void)
         scanf("%d", &data);
 
         if(position == 1){
-            if(tail == NULL){
-                tail = createNode(data);
-            }
-            else{
-                addAtFirst(tail, data);
-            }
+            if(tail == NULL) tail = createNode(data);
+            else addAtFirst(tail, data);
         }
-        else if(position == n+1){
-            tail = addAtLast(tail, data);
-        }
-        else{
-            addAtPosition(tail->next, data, position);
-        }
+        else if(position == n+1) tail = addAtLast(tail, data);
+        else addAtPosition(tail->next, data, position);
 
         ++n;
         printf("The linked list : ");

@@ -36,9 +36,7 @@ void addAtPosition(struct node *ptr, int data, int position)
 {
     struct node *temp = createNode(data);
     --position;
-    while(--position){
-        ptr = ptr->next;
-    }
+    while(--position) ptr = ptr->next;
     temp->next = ptr->next;
     temp->prev = ptr;
     ptr->next->prev = temp; //for last position, ptr->next == NULL
@@ -68,9 +66,7 @@ void deletePosition(struct node *prev, int position)
 {
     struct node *curr = NULL;
     --position;
-    while(--position){
-        prev = prev->next;
-    }
+    while(--position) prev = prev->next;
     curr = prev->next;
     prev->next = curr->next;
     curr->next->prev = prev;
@@ -122,9 +118,7 @@ int main(void)
             if(head == NULL) head = createNode(data);
             else head = addAtFirst(head, data);
         }
-        else if(position == n+1){
-            tail = addAtLast(tail, data);
-        }
+        else if(position == n+1) tail = addAtLast(tail, data);
         else addAtPosition(head, data, position);
 
         ++n;

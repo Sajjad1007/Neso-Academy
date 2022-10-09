@@ -33,9 +33,7 @@ void printBinary(unsigned num)
         push(num % 2);
         num /= 2;
     }
-    while(!isEmpty()){
-        printf("%u", pop());
-    }
+    while(!isEmpty()) printf("%u", pop());
     printf("\n");
     return;
 }

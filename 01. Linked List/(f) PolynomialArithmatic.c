@@ -22,12 +22,8 @@ struct node *insertNode(struct node *head, int coef, int expo)
         head = temp;
     }
     else{
-        while((ptr->link != NULL) && (ptr->link->expo >= expo)){
-            ptr = ptr->link;
-        }
-        if(ptr->expo == expo){
-            ptr->coef = ptr->coef + coef;
-        }
+        while((ptr->link != NULL) && (ptr->link->expo >= expo)) ptr = ptr->link;
+        if(ptr->expo == expo) ptr->coef = ptr->coef + coef;
         else{
             temp->link = ptr->link;
             ptr->link = temp;

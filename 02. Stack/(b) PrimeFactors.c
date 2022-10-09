@@ -50,9 +50,7 @@ void printPrimeFact(unsigned num)
         i += 2;
     }
 
-    while(!isEmpty()){
-        printf("%u ", pop());
-    }
+    while(!isEmpty()) printf("%u ", pop());
     printf("\n");
     return;
 }

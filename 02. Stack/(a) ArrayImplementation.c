@@ -64,9 +64,7 @@ void printStack()
         return;
     }
     printf("The stack : ");
-    for(int i = top; i >= 0; --i){
-        printf("%d ", stack[i]);
-    }
+    for(int i = top; i >= 0; --i) printf("%d ", stack[i]);
     printf("\n");
     return;
 }

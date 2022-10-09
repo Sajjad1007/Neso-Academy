@@ -39,9 +39,7 @@ struct node *addAtLast(struct node *tail, int data)
 void addAtPosition(struct node *ptr, int data, int position)
 {
     struct node *temp = createNode(data);
-    while(--position > 1){
-        ptr = ptr->next;
-    }
+    while(--position > 1) ptr = ptr->next;
     temp->next = ptr->next;
     temp->prev = ptr;
     ptr->next->prev = temp;
@@ -72,9 +70,7 @@ struct node *deleteLast(struct node *tail)
 void deletePosition(struct node *prev, int position)
 {
     struct node *curr = NULL;
-    while(--position > 1){
-        prev = prev->next;
-    }
+    while(--position > 1) prev = prev->next;
     curr = prev->next;
     prev->next = curr->next;
     curr->next->prev = prev;
@@ -126,12 +122,8 @@ int main(void)
             if(tail == NULL) tail = createNode(data);
             else addAtFirst(tail, data);
         }
-        else if(position == n+1){
-            tail = addAtLast(tail, data);
-        }
-        else{
-            addAtPosition(tail->next, data, position);
-        }
+        else if(position == n+1) tail = addAtLast(tail, data);
+        else addAtPosition(tail->next, data, position);
 
         ++n;
         printf("The linked list : ");
@@ -155,9 +147,7 @@ int main(void)
             }
             else deleteFirst(tail);
         }
-        else if(position == n){
-            tail = deleteLast(tail);
-        }
+        else if(position == n) tail = deleteLast(tail);
         else deletePosition(tail->next, position);
 
         --n;

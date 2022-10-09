@@ -24,9 +24,7 @@ struct node *addAtLast(struct node *tail,int data)
 void insertNode(struct node *ptr, int data)
 {
     struct node *temp = createNode(data);
-    while((ptr->link != NULL) && (ptr->link->data < data)){
-        ptr = ptr->link;
-    }
+    while((ptr->link != NULL) && (ptr->link->data < data)) ptr = ptr->link;
     temp->link = ptr->link;
     ptr->link = temp;
     return;

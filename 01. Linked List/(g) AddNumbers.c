@@ -41,9 +41,7 @@ struct node *addNumbers(struct node *ptr1, struct node *ptr2, struct node *head3
         head3 = pushNode(head3, sum%10);
         sum /= 10;
     }
-    if(sum != 0){
-        head3 = pushNode(head3, sum);
-    }
+    if(sum != 0) head3 = pushNode(head3, sum);
     return head3;
 }
 

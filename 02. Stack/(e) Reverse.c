@@ -46,17 +46,13 @@ void reverseStack(struct node **top)
     struct node *top2 = NULL;
 
     //pushing onto temporary stack 1
-    while(!isEmpty(top)){
-        push(&top1, pop(top));
-    }
+    while(!isEmpty(top)) push(&top1, pop(top));
+
     //pushing onto temporary stack 2
-    while(!isEmpty(&top1)){
-        push(&top2, pop(&top1));
-    }
+    while(!isEmpty(&top1)) push(&top2, pop(&top1));
+
     //pushing onto original stack
-    while(!isEmpty(&top2)){
-        push(top, pop(&top2));
-    }
+    while(!isEmpty(&top2)) push(top, pop(&top2));
     return;
 }
 

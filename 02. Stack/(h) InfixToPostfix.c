@@ -98,9 +98,7 @@ void infixToPostfix()
             }
         }
     }
-    while(!isEmpty()){
-        postfix[j++] = pop(); //the stack becomes empty
-    }
+    while(!isEmpty()) postfix[j++] = pop(); //the stack becomes empty
     postfix[j] = '\0';
     return;
 }
@@ -109,9 +107,7 @@ int postfixEvaluation()
 {
     int i = 0, a, b;
     while(i < strlen(postfix)){
-        if(postfix[i] >= '0' && postfix[i] <= '9'){
-            push(postfix[i++]-'0');
-        }
+        if(postfix[i] >= '0' && postfix[i] <= '9') push(postfix[i++]-'0');
         else{
             b = pop();
             a = pop();

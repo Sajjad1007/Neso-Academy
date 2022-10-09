@@ -38,9 +38,7 @@ void addAtPosition(struct node *ptr, int data, int position)
 {
     struct node *temp = createNode(data);
     --position;
-    while(--position){ //we want ptr to point the (position-1)th node
-        ptr = ptr->link;
-    }
+    while(--position) ptr = ptr->link; //we want ptr to point the (position-1)th node
     temp->link = ptr->link;
     ptr->link = temp;
     return;
@@ -57,9 +55,7 @@ struct node *deleteFirst(struct node *head)
 
 struct node *deleteLast(struct node *ptr) //we don't need to return the head pointer
 {
-    while(ptr->link->link != NULL){ //we want to stop at second last node
-        ptr = ptr->link;
-    }
+    while(ptr->link->link != NULL) ptr = ptr->link; //we want to stop at second last node
     struct node *last = ptr->link;
     free(last);
     ptr->link = last = NULL;
@@ -70,9 +66,7 @@ void deletePosition(struct node *prev, int position)
 {
     struct node *curr = NULL; //current will point to the node that we want to delete
     --position;               //previous will point to the node before current
-    while(--position){
-        prev = prev->link;
-    }
+    while(--position) prev = prev->link;
     curr = prev->link;
     prev->link = curr->link;
     free(curr);
@@ -97,13 +91,11 @@ void deletePosition2(struct node *toDelete)
 
 void deleteAllNodes(struct node **head)
 {
-    while(*head != NULL){
-        *head = deleteFirst(*head);
-        /*
-        we can't use deleteLast() function because
-        deleteLast() function cannot remove the first node
-        */
-    }
+    while(*head != NULL) *head = deleteFirst(*head);
+    /*
+    we can't use deleteLast() function because
+    deleteLast() function cannot remove the first node
+    */
     return;
 }
 
@@ -179,12 +171,8 @@ int main(void)
         printf("Enter a node at position %d : ", position);
         scanf("%d", &data);
 
-        if(position == 1){
-            head = addAtFirst(head, data);
-        }
-        else if(position == count+1){
-            tail = addAtLast(tail, data);
-        }
+        if(position == 1) head = addAtFirst(head, data);
+        else if(position == count+1) tail = addAtLast(tail, data);
         else addAtPosition(head, data, position);
 
         printf("\nThe linked list : ");
@@ -196,12 +184,8 @@ int main(void)
     scanf("%d", &position);
 
     if(position > 0){
-        if(position == 1){
-            head = deleteFirst(head);
-        }
-        else if(position == n){
-            tail = deleteLast(head);
-        }
+        if(position == 1) head = deleteFirst(head);
+        else if(position == n) tail = deleteLast(head);
         else deletePosition(head, position);
 
         --n;

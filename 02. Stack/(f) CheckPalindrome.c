@@ -43,9 +43,7 @@ char pop()
 bool isPalindrome(char *str)
 {
     int i = 0;
-    while(str[i] != 'x'){ //pushing characters onto stack until 'x' is found
-        push(str[i++]);
-    }
+    while(str[i] != 'x') push(str[i++]); //pushing characters onto stack until 'x' is found
 
     while(str[++i]){
         if(isEmpty() || str[i] != pop()) return false;
@@ -61,11 +59,7 @@ int main(void)
     printf("Please enter a string (keeping \'x\' in middle) : ");
     scanf("%s", str);
 
-    if(isPalindrome(str)){
-        printf("\nThis is a palindrome\n");
-    }
-    else{
-        printf("\nThis is not a palindrome\n");
-    }
+    if(isPalindrome(str)) printf("\nThis is a palindrome\n");
+    else printf("\nThis is not a palindrome\n");
     return 0;
 }

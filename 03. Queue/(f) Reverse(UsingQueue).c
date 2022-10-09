@@ -68,9 +68,7 @@ int pop()
 
 void enqueue(int data)
 {
-    if(front == -1){
-        front = 0;
-    }
+    if(front == -1) front = 0;
     queue[++rear] = data;
     return;
 }
@@ -83,13 +81,9 @@ int dequeue()
 void reverseStack()
 {
     //pop elements from stack, then enqueue them onto queue
-    while(!isSEmpty()){
-        enqueue(pop());
-    }
+    while(!isSEmpty()) enqueue(pop());
     //dequeue elements from queue, then push them onto stack
-    while(front != rear+1){
-        push(dequeue());
-    }
+    while(front != rear+1) push(dequeue());
     return;
 }
 
@@ -99,9 +93,7 @@ void printStack()
         printf("The stack is empty.\n");
         return;
     }
-    for(int i = top; i >= 0; --i){
-        printf("%d ", stack[i]);
-    }
+    for(int i = top; i >= 0; --i) printf("%d ", stack[i]);
     printf("\n");
     return;
 }

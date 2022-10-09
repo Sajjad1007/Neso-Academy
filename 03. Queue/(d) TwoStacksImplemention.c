@@ -99,12 +99,8 @@ void printQueue()
         return;
     }
 
-    for(int i = top2; i >= 0; --i){
-        printf("%d ", stack2[i]);
-    }
-    for(int i = 0; i <= top1; ++i){
-        printf("%d ", stack1[i]);
-    }
+    for(int i = top2; i >= 0; --i) printf("%d ", stack2[i]);
+    for(int i = 0; i <= top1; ++i) printf("%d ", stack1[i]);
     printf("\n");
     return;
 }
