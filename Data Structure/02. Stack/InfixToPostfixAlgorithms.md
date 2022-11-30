@@ -1,4 +1,4 @@
-#### Algorithm 1. To convert an expression from infix to postfix using stack
+## **Algorithm 1. To convert an expression from infix to postfix using stack**
 
 Scan the symbols of the given expression from left to right and for each symbol, do the following :
 
@@ -21,7 +21,7 @@ Else if symbol is an operator then
 
 The expression printed on the screen is the determined postfix expression of the given infix expression.
 
-#### Algorithm 2. To evaluate a postfix expression using stack
+## **Algorithm 2. To evaluate a postfix expression using stack**
 
 Scan the symbols of the given postfix expression from left to right and for each symbol, do the following :
 
