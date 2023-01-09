@@ -15,7 +15,7 @@ bool isEmpty(struct node **top)
 
 void push(struct node **top, int data)
 {
-    struct node *temp = (struct node*)malloc(sizeof(struct node));
+    struct node *temp = (struct node *)malloc(sizeof(struct node));
     if(temp == NULL){
         printf("Stack overflow\n");
         exit(1);
@@ -32,6 +32,7 @@ int pop(struct node **top)
         printf("Stack underflow\n");
         exit(1);
     }
+
     struct node *ptr = *top;
     *top = (*top)->link;
     int value = ptr->data;
@@ -59,7 +60,7 @@ void reverseStack(struct node **top)
 void printStack(struct node *ptr)
 {
     while(ptr != NULL){
-        printf("%d ", ptr->data);
+        printf(" %d", ptr->data);
         ptr = ptr->link;
     }
     printf("\n");
@@ -68,8 +69,8 @@ void printStack(struct node *ptr)
 
 int main(void)
 {
-    struct node *top = NULL;
     int n, data;
+    struct node *top = NULL;
     printf("Enter the number of elements : ");
     scanf("%d", &n);
 
@@ -84,10 +85,18 @@ int main(void)
         push(&top, data);
     }
 
-    printf("\nBefore reversing, the stack : ");
+    printf("\nBefore reversing, the stack :");
     printStack(top);
     reverseStack(&top);
-    printf("After reversing, the stack : ");
+    printf("After  reversing, the stack :");
     printStack(top);
     return 0;
 }
+
+/*
+Enter the number of elements : 5
+Enter the elements : 1 2 3 4 5
+
+Before reversing, the stack : 5 4 3 2 1
+After  reversing, the stack : 1 2 3 4 5
+*/

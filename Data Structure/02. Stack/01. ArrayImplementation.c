@@ -9,7 +9,7 @@ int top = -1; //the stack is empty
 
 bool isFull()
 {
-    if(top == MAX-1) return true;
+    if(top == MAX - 1) return true;
     else return false;
 }
 
@@ -49,6 +49,7 @@ int peek()
 
 void printChoiceList()
 {
+    printf("Menu\n");
     printf("1. Push\n");
     printf("2. Pop\n");
     printf("3. Print the top element\n");
@@ -63,8 +64,9 @@ void printStack()
         printf("The stack is empty\n");
         return;
     }
-    printf("The stack : ");
-    for(int i = top; i >= 0; --i) printf("%d ", stack[i]);
+
+    printf("The stack :");
+    for(int i = top; i >= 0; --i) printf(" %d", stack[i]);
     printf("\n");
     return;
 }
@@ -72,6 +74,8 @@ void printStack()
 int main(void)
 {
     int choice, data;
+    printf("The stack has been initialized\n\n");
+
     while(true){
         printChoiceList();
         printf("\nEnter your choice : ");
@@ -83,24 +87,33 @@ int main(void)
                 printf("Enter the element to be pushed : ");
                 scanf("%d", &data);
                 push(data);
-                printf("Element is pushed successfully.\n");
+                printf("%d has been pushed\n", data);
                 break;
+
             case 2:
-                printf("Deleted element is %d\n", pop());
+                printf("%d has been popped\n", pop());
                 break;
+
             case 3:
                 printf("The topmost element is %d\n", peek());
                 break;
+
             case 4:
                 printStack();
                 break;
+
             case 5:
                 printf("Fee Amanillah\n");
                 return 0;
+
             default:
-                printf("Invalid choice. Please try again.\n");
+                printf("Invalid choice\n");
                 break;
         }
         printf("\n");
     }
 }
+
+/*
+Menu driven program
+*/

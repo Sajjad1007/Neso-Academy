@@ -9,7 +9,7 @@ struct node{
 
 struct node *createNode(int data)
 {
-    struct node *temp = (struct node*)malloc(sizeof(struct node));
+    struct node *temp = (struct node *)malloc(sizeof(struct node));
     temp->data = data;
     temp->link = NULL;
     return temp;
@@ -17,7 +17,7 @@ struct node *createNode(int data)
 
 bool isFull()
 {
-    struct node *temp = (struct node*)malloc(sizeof(struct node));
+    struct node *temp = (struct node *)malloc(sizeof(struct node));
     if(temp == NULL) return true;
     else{
         free(temp);
@@ -37,6 +37,7 @@ void push(int data)
         printf("Stack overflow\n");
         exit(1);
     }
+
     struct node *temp = createNode(data);
     temp->link = top;
     top = temp;
@@ -49,6 +50,7 @@ int pop()
         printf("Stack underflow\n");
         exit(1);
     }
+
     struct node *ptr = top;
     top = top->link;
     int value = ptr->data;
@@ -68,6 +70,7 @@ int peek()
 
 void printChoiceList()
 {
+    printf("Menu\n");
     printf("1. Push\n");
     printf("2. Pop\n");
     printf("3. Print the top element\n");
@@ -82,10 +85,11 @@ void printStack()
         printf("The stack is empty\n");
         return;
     }
+
     struct node *ptr = top;
-    printf("The stack : ");
+    printf("The stack :");
     while(ptr != NULL){
-        printf("%d ", ptr->data);
+        printf(" %d", ptr->data);
         ptr = ptr->link;
     }
     printf("\n");
@@ -95,6 +99,8 @@ void printStack()
 int main(void)
 {
     int choice, data;
+    printf("The stack has been initialized\n\n");
+
     while(true){
         printChoiceList();
         printf("\nEnter your choice : ");
@@ -106,24 +112,33 @@ int main(void)
                 printf("Enter the element to be pushed : ");
                 scanf("%d", &data);
                 push(data);
-                printf("Element is pushed successfully.\n");
+                printf("%d has been pushed\n", data);
                 break;
+
             case 2:
-                printf("Deleted element is %d\n", pop());
+                printf("%d has been popped\n", pop());
                 break;
+
             case 3:
                 printf("The topmost element is %d\n", peek());
                 break;
+
             case 4:
                 printStack();
                 break;
+
             case 5:
                 printf("Fee Amanillah\n");
                 return 0;
+
             default:
-                printf("Invalid choice. Please try again.\n");
+                printf("Invalid choice\n");
                 break;
         }
         printf("\n");
     }
 }
+
+/*
+Menu driven program
+*/

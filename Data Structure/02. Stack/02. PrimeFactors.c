@@ -9,7 +9,7 @@ int top = -1;
 
 bool isFull()
 {
-    if(top == MAX-1) return true;
+    if(top == MAX - 1) return true;
     else return false;
 }
 
@@ -50,7 +50,7 @@ void printPrimeFact(unsigned num)
         i += 2;
     }
 
-    while(!isEmpty()) printf("%u ", pop());
+    while(!isEmpty()) printf(" %u", pop());
     printf("\n");
     return;
 }
@@ -60,7 +60,13 @@ int main(void)
     unsigned num;
     printf("Please enter a positive number : ");
     scanf("%u", &num);
-    printf("\nPrime factors of %u in descending order : ", num);
+    printf("\nPrime factors of %u in descending order :", num);
     printPrimeFact(num);
     return 0;
 }
+
+/*
+Please enter a positive number : 1200
+
+Prime factors of 1200 in descending order : 5 5 3 2 2 2 2
+*/

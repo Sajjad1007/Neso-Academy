@@ -12,3 +12,8 @@ int main(void)
     else printf("%d is not a leap year\n", year);
     return 0;
 }
+
+/*
+Enter the year : 2000
+2000 is a leap year
+*/

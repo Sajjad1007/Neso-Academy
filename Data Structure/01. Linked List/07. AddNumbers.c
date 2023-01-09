@@ -8,9 +8,10 @@ struct node{
 
 struct node *addNode(struct node *tail, int val)
 {
-    struct node *newNode = (struct node*)malloc(sizeof(struct node));
+    struct node *newNode = (struct node *)malloc(sizeof(struct node));
     newNode->data = val;
     newNode->link = NULL;
+
     if(tail == NULL) return newNode;
     else{
         tail->link = newNode;
@@ -20,7 +21,7 @@ struct node *addNode(struct node *tail, int val)
 
 struct node *pushNode(struct node *head, int val)
 {
-    struct node *newNode = (struct node*)malloc(sizeof(struct node));
+    struct node *newNode = (struct node *)malloc(sizeof(struct node));
     newNode->data = val;
     newNode->link = head;
     return newNode;
@@ -29,6 +30,7 @@ struct node *pushNode(struct node *head, int val)
 struct node *addNumbers(struct node *ptr1, struct node *ptr2, struct node *head3)
 {
     int sum = 0;
+
     while(ptr1 || ptr2){
         if(ptr1 != NULL){
             sum += ptr1->data;
@@ -38,9 +40,10 @@ struct node *addNumbers(struct node *ptr1, struct node *ptr2, struct node *head3
             sum += ptr2->data;
             ptr2 = ptr2->link;
         }
-        head3 = pushNode(head3, sum%10);
+        head3 = pushNode(head3, sum % 10);
         sum /= 10;
     }
+
     if(sum != 0) head3 = pushNode(head3, sum);
     return head3;
 }
@@ -57,37 +60,49 @@ void printNodes(struct node *ptr)
 
 int main(void)
 {
+    int num1, num2;
     struct node *head1 = NULL;
     struct node *head2 = NULL;
     struct node *head3 = NULL;
     struct node *tail1 = NULL;
     struct node *tail2 = NULL;
-    int num1, num2;
 
-    printf("Enter first number = ");
+    printf("Enter 1st non-negative number = ");
     scanf("%d", &num1);
-    tail1 = head1 = addNode(tail1, num1%10);
+    tail1 = head1 = addNode(tail1, num1 % 10);
     num1 /= 10;
+
     while(num1 != 0){
-        tail1 = addNode(tail1, num1%10);
+        tail1 = addNode(tail1, num1 % 10);
         num1 /= 10;
     }
 
-    printf("Enter second number = ");
+    printf("Enter 2nd non-negative number = ");
     scanf("%d", &num2);
-    tail2 = head2 = addNode(tail2, num2%10);
+    tail2 = head2 = addNode(tail2, num2 % 10);
     num2 /= 10;
+
     while(num2 != 0){
-        tail2 = addNode(tail2, num2%10);
+        tail2 = addNode(tail2, num2 % 10);
         num2 /= 10;
     }
 
-    printf("\nThe reversed first number = ");
+    printf("\nThe reversed 1st number = ");
     printNodes(head1);
-    printf("The reversed second number = ");
+    printf("The reversed 2nd number = ");
     printNodes(head2);
     head3 = addNumbers(head1, head2, head3);
     printf("\nThe sum of two numbers = ");
     printNodes(head3);
     return 0;
 }
+
+/*
+Enter 1st non-negative number = 14
+Enter 2nd non-negative number = 35
+
+The reversed 1st number = 41
+The reversed 2nd number = 53
+
+The sum of two numbers = 49
+*/

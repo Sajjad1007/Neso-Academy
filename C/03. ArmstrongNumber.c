@@ -1,6 +1,5 @@
 /*
-An armstrong number of n digits is a number in which each digit when multiplied by itself n times
-and finally added together, results the same number.
+Armstrong number : a number of n digits, where multiplying each digit by itself n times and adding them all results the same number
 */
 
 #include <stdio.h>
@@ -26,3 +25,8 @@ int main(void)
     else printf("%d is not an armstrong number\n", num);
     return 0;
 }
+
+/*
+Enter a number : 371
+371 is an armstrong number
+*/

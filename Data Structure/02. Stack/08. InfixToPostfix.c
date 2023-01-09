@@ -1,6 +1,5 @@
 /*
-infix means that the operator is written in between two operands
-postfix means that the operator is written after two operands
+Infix means that the operator is written in between two operands, postfix means that the operator is written after two operands
 computers prefer postfix expressions instead of infix expressions
 */
 
@@ -51,12 +50,15 @@ int precedence(char symbol)
     {
     case '^':
         return 3;
+
     case '/':
     case '*':
         return 2;
+
     case '+':
     case '-':
         return 1;
+
     default:
         return 0;
     }
@@ -66,6 +68,7 @@ void infixToPostfix()
 {
     int i = 0, j = 0;
     char symbol, next;
+
     while(i < strlen(infix)){
         symbol = infix[i++];
         if(!isSpace(symbol)){
@@ -74,6 +77,7 @@ void infixToPostfix()
             case '(':
                 push(symbol);
                 break;
+
             case ')':
                 next = pop();
                 while(next != '('){
@@ -81,6 +85,7 @@ void infixToPostfix()
                     next = pop();
                 }
                 break;
+
             case '+':
             case '-':
             case '*':
@@ -92,12 +97,14 @@ void infixToPostfix()
                 }
                 push(symbol);
                 break;
+
             default:
                 postfix[j++] = symbol;
                 break;
             }
         }
     }
+
     while(!isEmpty()) postfix[j++] = pop(); //the stack becomes empty
     postfix[j] = '\0';
     return;
@@ -107,26 +114,31 @@ int postfixEvaluation()
 {
     int i = 0, a, b;
     while(i < strlen(postfix)){
-        if(postfix[i] >= '0' && postfix[i] <= '9') push(postfix[i++]-'0');
+        if(postfix[i] >= '0' && postfix[i] <= '9') push(postfix[i++] - '0');
         else{
             b = pop();
             a = pop();
+
             switch(postfix[i++])
             {
             case '+':
-                push(a+b);
+                push(a + b);
                 break;
+
             case '-':
-                push(a-b);
+                push(a - b);
                 break;
+
             case '*':
-                push(a*b);
+                push(a * b);
                 break;
+
             case '/':
-                push(a/b);
+                push(a / b);
                 break;
+
             case '^': //the associativity of this operator is right to left
-                push(pow(a,b));
+                push(pow(a, b));
                 break;
             }
         }
@@ -145,3 +157,10 @@ int main(void)
     printf("The result obtained after postfix evaluation : %d\n", result);
     return 0;
 }
+
+/*
+Enter the infix expression : (8+7)*(6-3)/9+(2*7-4)/5
+
+The equivalent postfix expression : 87+63-*9/27*4-5/+
+The result obtained after postfix evaluation : 7
+*/

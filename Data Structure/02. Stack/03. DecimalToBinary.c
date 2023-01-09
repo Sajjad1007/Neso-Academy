@@ -29,10 +29,12 @@ void printBinary(unsigned num)
         printf("0\n");
         return;
     }
+
     while(num != 0){
         push(num % 2);
         num /= 2;
     }
+
     while(!isEmpty()) printf("%u", pop());
     printf("\n");
     return;
@@ -47,3 +49,9 @@ int main(void)
     printBinary(num);
     return 0;
 }
+
+/*
+Enter a positive decimal number : 203
+
+Binary equivalent of 203 = 11001011
+*/

@@ -17,10 +17,16 @@ int main(void)
     }
     else{
         while(expo != 0){
-            power2 *= (1.0/base);
+            power2 *= (1.0 / base);
             expo++;
         }
-        printf("\n%d ^ %d = %g\n", base, exponent, power2);
+        printf("\npow(%d, %d) = %g\n", base, exponent, power2);
     }
     return 0;
 }
+
+/*
+Enter base and exponent : 2 -3
+
+pow(2, -3) = 0.125
+*/

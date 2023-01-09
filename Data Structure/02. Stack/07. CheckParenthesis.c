@@ -10,7 +10,7 @@ int top = -1;
 
 bool isFull()
 {
-    if(top == MAX-1) return true;
+    if(top == MAX - 1) return true;
     else return false;
 }
 
@@ -62,6 +62,7 @@ bool isBalanced(char *str)
             }
         }
     }
+
     if(isEmpty()) return true;
     else{
         printf("Left brackets are more than right brackets\n");
@@ -78,3 +79,9 @@ int main(void)
     if(isBalanced(expr)) printf("Brackets are well balanced\n");
     return 0;
 }
+
+/*
+Enter the algebraic expression : {a+b*[c/d]-(a+d)}
+
+Brackets are well balanced
+*/

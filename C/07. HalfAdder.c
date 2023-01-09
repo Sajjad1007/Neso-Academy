@@ -16,3 +16,8 @@ int main(void)
     printf("Sum = %d\n", sum);
     return 0;
 }
+
+/*
+Enter two numbers : -21 12
+Sum = -9
+*/

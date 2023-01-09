@@ -26,3 +26,8 @@ int main(void)
     else printf("%d is not a prime number\n", num);
     return 0;
 }
+
+/*
+Enter a number : 31
+31 is a prime number
+*/

@@ -1,6 +1,5 @@
 /*
-A strong number is a number in which the sum of factorial of individual digits of a number
-is equal to the original number.
+Strong number : a number in which the sum of factorials of individual digits is equal to the number itself
 */
 
 #include <stdio.h>
@@ -25,3 +24,8 @@ int main(void)
     else printf("%d is not a strong number\n", num);
     return 0;
 }
+
+/*
+Enter a number : 145
+145 is a strong number
+*/

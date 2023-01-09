@@ -9,11 +9,10 @@ struct node{
 struct node *createNode(int data)
 {
     /*
-    if we don't allocate memory for the pointer and try to assign data,
-    it will be an uninitialized or wild pointer
+    if we don't allocate memory for the pointer and try to assign data, it will be an uninitialized or wild pointer
     using malloc() function, we can allocate space in heap memory
     */
-    struct node *temp = (struct node*)malloc(sizeof(struct node));
+    struct node *temp = (struct node *)malloc(sizeof(struct node));
     temp->data = data;
     temp->link = NULL;
     return temp;
@@ -38,7 +37,8 @@ void addAtPosition(struct node *ptr, int data, int position)
 {
     struct node *temp = createNode(data);
     --position;
-    while(--position) ptr = ptr->link; //we want ptr to point the (position-1)th node
+
+    while(--position) ptr = ptr->link; //we want ptr to point the (position - 1)th node
     temp->link = ptr->link;
     ptr->link = temp;
     return;
@@ -64,8 +64,9 @@ struct node *deleteLast(struct node *ptr) //we don't need to return the head poi
 
 void deletePosition(struct node *prev, int position)
 {
-    struct node *curr = NULL; //current will point to the node that we want to delete
-    --position;               //previous will point to the node before current
+    struct node *curr = NULL; //curr will point to the node that we want to delete
+    --position; //prev will point to the node before curr
+
     while(--position) prev = prev->link;
     curr = prev->link;
     prev->link = curr->link;
@@ -92,10 +93,7 @@ void deletePosition2(struct node *toDelete)
 void deleteAllNodes(struct node **head)
 {
     while(*head != NULL) *head = deleteFirst(*head);
-    /*
-    we can't use deleteLast() function because
-    deleteLast() function cannot remove the first node
-    */
+    //we can't use deleteLast() function here because deleteLast() function cannot remove the first node
     return;
 }
 
@@ -111,7 +109,7 @@ struct node *reverse(struct node *ptr)
     */
     while(ptr != NULL){
         next = ptr->link; //for 1st iteration, next is pointing to 2nd node
-        ptr->link = prev; //link part of the 1st node pointing to prev
+        ptr->link = prev; //link part of the 1st node is pointing to prev
         prev = ptr; //prev is pointing to 1st node
         ptr = next; //head is pointing to 2nd node
     }
@@ -131,7 +129,7 @@ int countOfNodes(struct node *ptr)
 void printNodes(struct node *ptr)
 {
     while(ptr != NULL){
-        printf("%d ", ptr->data);
+        printf(" %d", ptr->data);
         ptr = ptr->link;
     }
     return;
@@ -139,9 +137,9 @@ void printNodes(struct node *ptr)
 
 int main(void)
 {
+    int n, data, count, position;
     struct node *head = NULL;
     struct node *tail = NULL;
-    int n, data, count, position;
 
     printf("Number of nodes = ");
     scanf("%d", &n);
@@ -150,18 +148,20 @@ int main(void)
         printf("Enter the node(s) : ");
         scanf("%d", &data);
         tail = head = createNode(data); //creating the first node
+
         for(int i = 1; i < n; ++i){
             scanf("%d", &data);
             tail = addAtLast(tail, data);
         }
-        printf("\nThe linked list : ");
+
+        printf("\nThe linked list :");
         printNodes(head);
         count = countOfNodes(head);
-        printf("\nTotal nodes = %d\n",count);
+        printf("\nTotal node(s) = %d\n",count);
     }
     else{
-        printf("\nThe linked list is empty.");
-        printf("\nTotal nodes = %d\n", n);
+        printf("\nThe linked list is empty");
+        printf("\nTotal node(s) = %d\n", n);
     }
 
     printf("\nEnter a position for inserting a node : ");
@@ -172,12 +172,12 @@ int main(void)
         scanf("%d", &data);
 
         if(position == 1) head = addAtFirst(head, data);
-        else if(position == count+1) tail = addAtLast(tail, data);
+        else if(position == count + 1) tail = addAtLast(tail, data);
         else addAtPosition(head, data, position);
 
-        printf("\nThe linked list : ");
+        printf("\nThe linked list :");
         printNodes(head);
-        printf("\nTotal nodes = %d\n", ++n);
+        printf("\nTotal node(s) = %d\n", ++n);
     }
 
     printf("\nEnter a position for deleting a node : ");
@@ -190,22 +190,45 @@ int main(void)
 
         --n;
         if(n > 0){
-            printf("\nThe linked list : ");
+            printf("\nThe linked list :");
             printNodes(head);
-            printf("\nTotal nodes = %d\n", n);
+            printf("\nTotal node(s) = %d\n", n);
         }
         else{
-            printf("\nThe linked list is empty.\n");
-            printf("So reverse of the linked list does not exist.\n");
+            printf("\nThe linked list is empty\n");
+            printf("So reverse of the linked list does not exist\n");
             return 0;
         }
     }
 
     head = reverse(head);
-    printf("\nThe reversed linked list : ");
+    printf("\nThe reversed linked list :");
     printNodes(head);
 
     deleteAllNodes(&head);
-    printf("\n\nThe linked list deleted successfully.\n");
+    printf("\n\nThe linked list has been deleted successfully\n");
     return 0;
 }
+
+/*
+Number of nodes = 5
+Enter the node(s) : 1 2 3 4 5
+
+The linked list : 1 2 3 4 5
+Total node(s) = 5
+
+Enter a position for inserting a node : 2
+Enter a node at position 2 : 0
+
+The linked list : 1 0 2 3 4 5
+Total node(s) = 6
+
+Enter a position for deleting a node : 6
+
+The linked list : 1 0 2 3 4
+Total node(s) = 5
+
+The reversed linked list : 4 3 2 0 1
+
+The linked list has been deleted successfully
+*/

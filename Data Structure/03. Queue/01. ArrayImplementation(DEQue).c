@@ -31,17 +31,19 @@ int main(void)
         switch(choice)
         {
             case 1:
-                printf("Enter the element to be inserted : ");
+                printf("Enter the element to be enqueued : ");
                 scanf("%d", &data);
                 enqueueFront(data);
-                printf("Element is inserted successfully.\n");
+                printf("%d has been enqueued\n", data);
                 break;
+
             case 2:
                 printf("Enter the element to be inserted : ");
                 scanf("%d", &data);
                 enqueueRear(data);
                 printf("Element is inserted successfully.\n");
                 break;
+
             case 3:
                 printf("Deleted element is %d\n", dequeueFront());
                 break;

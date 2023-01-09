@@ -15,7 +15,7 @@ bool isEmpty()
 
 void push(char data)
 {
-    struct node *temp = (struct node*)malloc(sizeof(struct node));
+    struct node *temp = (struct node *)malloc(sizeof(struct node));
     if(temp == NULL){
         printf("Stack overflow\n");
         exit(1);
@@ -32,6 +32,7 @@ char pop()
         printf("Stack underflow\n");
         exit(1);
     }
+
     struct node *ptr = top;
     top = top->link;
     char value = ptr->data;
@@ -59,7 +60,13 @@ int main(void)
     printf("Please enter a string (keeping \'x\' in middle) : ");
     scanf("%s", str);
 
-    if(isPalindrome(str)) printf("\nThis is a palindrome\n");
-    else printf("\nThis is not a palindrome\n");
+    if(isPalindrome(str)) printf("\n\"%s\" is a palindrome\n", str);
+    else printf("\n\"%s\" is not a palindrome\n", str);
     return 0;
 }
+
+/*
+Please enter a string (keeping 'x' in middle) : abbcxcbab
+
+"abbcxcbab" is not a palindrome
+*/
